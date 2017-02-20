@@ -2,4 +2,22 @@
 
 {% block content %}
 
+<h1>Sign In</h1>
+<form>
+	<div class="form-field">
+		<label for="user">Username</label>
+		<input type="text" id="user" name="username" />
+	</div>
+	<div class="form-field">
+		<label for="pass">Password</label>
+		<input type="password" id="pass" name="password" />
+	</div>
+	<div class="form-field">
+		<input type="submit" value="Submit" />
+	</div>
+</form>
+<p>
+	Or create a new account <a href="/signup">here</a>.
+</p>
+
 {% endblock %}
