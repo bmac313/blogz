@@ -102,8 +102,6 @@ class BlogIndexHandler(BlogHandler):
 			next_page = page + 1
 		else:
 			next_page = None
-
-		# render the page
 		t = jinja_env.get_template("blog.html")
 		response = t.render(
 					posts=posts,
