@@ -258,12 +258,12 @@ class SignupHandler(BlogHandler):
 
 class LoginHandler(BlogHandler):
 
-	# TODO - The login code here is mostly set up for you, but there isn't a template to log in
-
-	def render_login_form(self, user_error="", pass_error=""):
+	def render_login_form(self, username="", user_error="", pass_error=""):
 		""" Render the login form with or without an error, based on parameters """
 		t = jinja_env.get_template("login.html")
-		response = t.render(user_error=user_error, pass_error=pass_error)
+		response = t.render(username=username,
+							user_error=user_error,
+							pass_error=pass_error)
 		self.response.out.write(response)
 
 	def get(self):
@@ -277,12 +277,12 @@ class LoginHandler(BlogHandler):
 		user = self.get_user_by_name(submitted_username)
 
 		if not user:
-			self.render_login_form(user_error="Invalid username")
+			self.render_login_form(username=submitted_username, user_error="Invalid username")
 		elif hashutils.valid_pw(submitted_username, submitted_password, user.pw_hash):
 			self.login_user(user)
 			self.redirect('/blog/newpost')
 		else:
-			self.render_login_form(pass_error="Invalid password")
+			self.render_login_form(username=submitted_username, pass_error="Invalid password")
 
 class LogoutHandler(BlogHandler):
 
