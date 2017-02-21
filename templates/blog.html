@@ -4,6 +4,12 @@
 
 <h1>blog posts!</h1>
 
+{% if not posts %}
+
+<p>No posts found for user {{ username }}. This user either does not exist or has not yet made any posts. (Note: usernames are case sensitive!)</p>
+
+{% endif %}
+
 {% for post in posts %}
 
 <h2><a href="/blog/{{ post.key().id() }}">{{ post.title }}</a></h2>
