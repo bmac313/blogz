@@ -134,7 +134,6 @@ class NewPostHandler(BlogHandler):
 			post = Post(
 				title=title,
 				body=body,
-				# TODO: Find out how to save username in database instead of key
 				author=self.user)
 			post.put()
 
